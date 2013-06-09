@@ -19,17 +19,17 @@
 *
 * import this module:
 *
-*  "github.com/mattetti/revel_addons/db"
+*  "github.com/mattetti/revel_addons/jetDb"
 *
 * And in the init function, add the following:
 *
-*   revel.OnAppStart(func() { db.Setup() })
+*   revel.OnAppStart(func() { jetDb.Setup() })
 *
-* Then from your code, you can access the db via db.DB
+* Then from your code, you can access the db via jetDb.DB
 *
  */
 
-package db
+package jetDb
 
 import (
 	"fmt"
