@@ -71,8 +71,12 @@ func Setup() (err error) {
 	} else if Adapter == "mysql" {
     Adapter = "mymysql"
 		port = revel.Config.StringDefault("db.port", "3306")
-    // See https://github.com/go-sql-driver/mysql#dsn-data-source-name
-		dataSource = username + ":" + password + "@tcp(" + hostname + ":" + port + ")/" + databaseName + "?charset=utf8"
+    // Possible formats
+    //   DBNAME/USER/PASSWD
+    //   unix:SOCKPATH*DBNAME/USER/PASSWD
+    //   tcp:ADDR*DBNAME/USER/PASSWD
+    // See https://github.com/ziutek/mymysql/blob/master/godrv/driver.go#L309 
+    dataSource = databaseName + "/" + username + "/" + password
 	}
 
 	DB, err = hood.Open(Adapter, dataSource)
